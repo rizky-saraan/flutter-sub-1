@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sub_1/core/utility/colors.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+
+import '../../../../core/utility/dimens.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -22,13 +25,11 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
-
-    const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
-      bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+    var pageDecoration = PageDecoration(
+      titleTextStyle: Theme.of(context).textTheme.headline1!,
+      bodyTextStyle: Theme.of(context).textTheme.bodyText2!,
+      bodyPadding: const EdgeInsets.fromLTRB(edgePage, 0.0, 16.0, edgePage),
+      pageColor: whiteColor,
       imagePadding: EdgeInsets.zero,
     );
     return IntroductionScreen(
@@ -65,13 +66,13 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         ),
       ],
       onDone: () {
-        // When done button is press
+        _onIntroEnd(context);
       },
       showBackButton: false,
       showSkipButton: true,
       skip: const Text("Skip"),
       next: const Text("Next"),
-      done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
+      done: Text("Done", style: Theme.of(context).textTheme.headline6),
     );
   }
 }

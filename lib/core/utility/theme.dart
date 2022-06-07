@@ -8,27 +8,36 @@ class CustomTheme {
       primaryColor: primaryColor,
       scaffoldBackgroundColor: Colors.white,
       errorColor: redColor,
+      fontFamily: "Roboto",
       textTheme: const TextTheme(
         headline1: TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 22.0,
-          color: Colors.green,
-        ),
-        headline6: TextStyle(fontSize: 15.0, color: Colors.orange),
-        headline4: TextStyle(
-          fontSize: 24.0,
-          color: Colors.white,
+          fontSize: 28.0,
+          fontWeight: FontWeight.bold,
+          color: primaryColor,
         ),
         headline3: TextStyle(
           fontSize: 22.0,
           color: Colors.grey,
         ),
-        caption: TextStyle(
-          color: Color(0xFFCCC5AF),
+        headline4: TextStyle(
+          fontSize: 24.0,
+          color: Colors.white,
         ),
-        bodyText2: TextStyle(color: Color(0xFF807A6B)),
+        headline6: TextStyle(
+          fontSize: 15.0,
+          color: secondaryColor,
+        ),
         bodyText1: TextStyle(
           color: Colors.brown,
+        ),
+        bodyText2: TextStyle(
+          color: blackColor,
+        ),
+        button: TextStyle(
+          color: blackColor,
+        ),
+        caption: TextStyle(
+          color: blackColor,
         ),
       ),
       buttonTheme: ButtonThemeData(
