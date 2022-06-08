@@ -1,7 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sub_1/core/utility/colors.dart';
+import 'package:flutter_sub_1/screen/home_screen/domain/services/home_service.dart';
+import 'package:flutter_sub_1/screen/home_screen/presentation/widgets/home_drawer.dart';
 
+import '../../../../core/utility/colors.dart';
 import '../../../../core/utility/strings.dart';
+import '../../data/models/home_banner.dart';
 
 class HomeScreen extends StatefulWidget {
   final String? title;
@@ -14,11 +18,23 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   int _selectedDestination = 0;
+  HomeService? homeService; //declare home service
+  List<HomeBanner>? listBanner = []; //declare list banner
+
+  @override
+  void initState() {
+    //initialize home service
+    homeService = HomeService();
+    _getBanner();
+    super.initState();
+  }
+
+  _getBanner() async {
+    listBanner = await homeService?.getBanner();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,56 +43,38 @@ class HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: primaryColor,
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(color: primaryColor),
-              accountName: Text(
-                Strings.userName,
-                style: textTheme.headline6?.copyWith(color: whiteColor),
-              ),
-              accountEmail: Text(
-                "rikisaraan2@gmail.com",
-                style: textTheme.bodyText1?.copyWith(color: whiteColor),
-              ),
-              currentAccountPicture: Image.asset(
-                "assets/images/logo.png",
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-              ),
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.home,
-              ),
-              title: const Text('Page 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.train,
-              ),
-              title: const Text('Page 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-      body: Center(
+      drawer: const HomeDrawer(),
+      body: SafeArea(
         child: Column(
-          children: const [
-            SizedBox(
-              height: 50,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
+            banner(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget banner() {
+    return CarouselSlider(
+      options: CarouselOptions(height: 150.0),
+      items: ["1.png", "2.png", "3.png", "4.png"].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.symmetric(horizontal: 5.0),
+              decoration: const BoxDecoration(color: primaryColor),
+              child: Image.asset(
+                "assets/images/banner/$i",
+                width: MediaQuery.of(context).size.width,
+              ),
+            );
+          },
+        );
+      }).toList(),
     );
   }
 
