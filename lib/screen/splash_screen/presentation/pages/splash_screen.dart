@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:package_info/package_info.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,31 +10,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  String versionName = "";
-
   @override
   void initState() {
     super.initState();
-    _getVersionApps();
-
     Timer(
       const Duration(seconds: 3),
       () => Navigator.pushNamed(context, "/onboard"),
     );
-  }
-
-  _getVersionApps() async {
-    String projectVersion;
-    try {
-      PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      projectVersion = packageInfo.version;
-    } on PlatformException {
-      projectVersion = 'Failed to get project version.';
-    }
-
-    setState(() {
-      versionName = projectVersion;
-    });
   }
 
   @override
@@ -61,10 +41,6 @@ class SplashScreenState extends State<SplashScreen> {
               ),
               const SizedBox(
                 height: 20,
-              ),
-              Text(
-                versionName,
-                style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),
