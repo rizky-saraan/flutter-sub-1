@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utility/colors.dart';
+
 class CustomButton extends StatelessWidget {
   final String? label;
   final Function? press;
@@ -15,6 +17,9 @@ class CustomButton extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          side: const BorderSide(width: 1, color: accentColor),
+        ),
         onPressed: press as void Function()?,
         child: Text(
           label ?? "",

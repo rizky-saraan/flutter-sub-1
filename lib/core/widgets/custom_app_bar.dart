@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import '../utility/colors.dart';
 import '../utility/strings.dart';
 
-class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppbar({Key? key})
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const CustomAppBar({Key? key})
       : preferredSize = const Size.fromHeight(60.0),
         super(key: key);
   @override
   final Size preferredSize;
 
   @override
-  _CustomAppbarState createState() => _CustomAppbarState();
+  _CustomAppBarState createState() => _CustomAppBarState();
 }
 
-class _CustomAppbarState extends State<CustomAppbar> {
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(

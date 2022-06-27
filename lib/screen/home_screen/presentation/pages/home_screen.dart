@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sub_1/core/widgets/custom_appbar.dart';
+import 'package:flutter_sub_1/core/widgets/custom_app_bar.dart';
 
 import '../../data/models/product.dart';
 import '../../domain/services/home_service.dart';
@@ -41,7 +41,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbar(),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

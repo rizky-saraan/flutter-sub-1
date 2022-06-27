@@ -17,7 +17,7 @@ class CustomTheme {
         ),
         headline3: TextStyle(
           fontSize: 22.0,
-          color: Colors.grey,
+          color: whiteColor,
         ),
         headline4: TextStyle(
           fontSize: 24.0,
