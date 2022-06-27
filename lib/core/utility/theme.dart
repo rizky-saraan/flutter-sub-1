@@ -24,8 +24,9 @@ class CustomTheme {
           color: Colors.white,
         ),
         headline6: TextStyle(
-          fontSize: 15.0,
-          color: secondaryColor,
+          fontSize: 12,
+          color: blackColor,
+          fontWeight: FontWeight.bold,
         ),
         bodyText1: TextStyle(
           color: Colors.brown,
