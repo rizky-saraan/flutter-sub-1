@@ -30,8 +30,10 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   _getBanner() async {
-    var banner = await homeService?.getBanner();
-    listBanner = banner!.map((e) => e.image.toString()).toList();
+    final banner = await homeService?.getBanner();
+    setState(() {
+      listBanner = banner!.map((e) => e.image.toString()).toList();
+    });
   }
 
   _getListProduct() async {
@@ -49,7 +51,7 @@ class HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 10,
               ),
-              ListBanner(banner: listBanner ?? []),
+              ListBanner(banner: listBanner),
               const SizedBox(
                 height: 5,
               ),

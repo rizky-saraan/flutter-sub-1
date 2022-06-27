@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sub_1/screen/home_screen/presentation/widgets/item_banner.dart';
 
 class ListBanner extends StatelessWidget {
-  final List<String> banner;
+  final List<String>? banner;
 
   const ListBanner({Key? key, required this.banner}) : super(key: key);
 
@@ -24,7 +24,7 @@ class ListBanner extends StatelessWidget {
         enlargeCenterPage: true,
         scrollDirection: Axis.horizontal,
       ),
-      items: banner.map((image) {
+      items: banner?.map((image) {
         return Builder(
           builder: (BuildContext context) {
             return ItemBanner(

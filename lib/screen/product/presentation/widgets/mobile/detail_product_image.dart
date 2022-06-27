@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
-class DetailProductImage extends StatelessWidget {
-  final String? imagePath;
+import '../../../../home_screen/data/models/product.dart';
 
-  const DetailProductImage({Key? key, this.imagePath}) : super(key: key);
+class DetailProductImage extends StatelessWidget {
+  final Product? product;
+
+  const DetailProductImage({Key? key, this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.network(
-          imagePath ?? "",
-          fit: BoxFit.cover,
+        Hero(
+          tag: product?.id ?? "",
+          child: Image.network(
+            product?.image ?? "",
+            fit: BoxFit.cover,
+          ),
         ),
         Container(
           decoration: const BoxDecoration(
